@@ -1,0 +1,28 @@
+{
+  "name": "full-stack",
+  "version": "1.0.0",
+  "description": "Fullstack Javascript app built with React and Express",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node server.js",
+    "test": "test"
+  },
+  "keywords": [
+    "javascript",
+    "node",
+    "react",
+    "express",
+    "es6"
+  ],
+  "author": "J. Lea-Jones",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^1.18.9"
+  }
+}
