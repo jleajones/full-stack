@@ -4,7 +4,9 @@
   "description": "Fullstack Javascript app built with React and Express",
   "main": "index.js",
   "scripts": {
+    "serve:dev": "concurrently --kill-others-on-fail \"npm run start\" \"npm run client\"",
     "start": "nodemon --exec babel-node server.js",
+    "client": "cd client && npm run build && npm run start:dev",
     "test": "test"
   },
   "keywords": [
@@ -24,6 +26,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "concurrently": "^4.1.0",
     "nodemon": "^1.18.9"
   }
 }

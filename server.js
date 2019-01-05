@@ -1,22 +1,13 @@
 import express from 'express';
-import morgan from 'morgan';
+import { errLog, outLog } from "./middleware/logger";
 import logger from './utils/logger';
 
 const API_PORT = 3001;
 const app = express();
 
-app.use(morgan('dev', {
-    skip: function (req, res) {
-        return res.statusCode < 400
-    }, stream: process.stderr
-}));
-
-app.use(morgan('dev', {
-    skip: function (req, res) {
-        return res.statusCode >= 400
-    }, stream: process.stdout
-}));
+app.use(errLog);
+app.use(outLog);
 
 app.get('/', (req, res) => res.send('hello world!'));
 
-app.listen(API_PORT, () => logger.log('info', `LISTENING ON PORT ${API_PORT}`));
+app.listen(API_PORT, () => logger.info(`API Server: LISTENING ON PORT ${API_PORT}`));
