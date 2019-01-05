@@ -1,5 +1,6 @@
 import 'ignore-styles';
 import express from 'express';
+import Loadable from 'react-loadable';
 import logger from '../../utils/logger'
 import { errLog, outLog } from '../../middleware/logger';
 import serverRenderer from './middleware/serverRenderer';
@@ -27,10 +28,12 @@ router.use(express.static(
 app.use(router);
 
 // start the app
-app.listen(PORT, (error) => {
-    if (error) {
-        return logger.error('something bad happened', error);
-    }
+Loadable.preloadAll().then(() => {
+    app.listen(PORT, (error) => {
+        if (error) {
+            return logger.error('something bad happened', error);
+        }
 
-    logger.info(`UI Server: LISTENING ON PORT ${PORT}`);
+        logger.info(`UI Server: LISTENING ON PORT ${PORT}`);
+    });
 });
