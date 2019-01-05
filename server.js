@@ -1,5 +1,6 @@
 import express from 'express';
 import morgan from 'morgan';
+import logger from './utils/logger';
 
 const API_PORT = 3001;
 const app = express();
@@ -18,4 +19,4 @@ app.use(morgan('dev', {
 
 app.get('/', (req, res) => res.send('hello world!'));
 
-app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
+app.listen(API_PORT, () => logger.log('info', `LISTENING ON PORT ${API_PORT}`));
