@@ -20,13 +20,34 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
 
-app.get('/', (req, res) => res.send('hello world!'));
+app.get('/', (req, res) => res.json({
+    api: 1
+}));
 app.use('/api', apiRoutes);
 app.use((req, res, next) => {
     const err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
+
+if(ENV === 'DEV') {
+    app.use((err, req, res) => {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
+    })
+}
+
+
+app.use((err, req, res) => {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
+})
 
 app.listen(PORT, (error) => {
     if(error) {

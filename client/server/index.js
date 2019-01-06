@@ -36,6 +36,6 @@ Loadable.preloadAll().then(() => {
             return logger.error('something bad happened', error);
         }
 
-        logger.info(`🌐 UI Server: Running in ${ENV} mode; Listening on PORT ${PORT}`);
+        logger.info(`🖥️  UI Server: Running in ${ENV} mode; Listening on PORT ${PORT}`);
     });
 });
