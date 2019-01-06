@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import Loadable from 'react-loadable';
 
+import logger from '../../../utils/logger'
+
 import manifest from '../../build/asset-manifest.json';
 import App from '../../src/App';
 
@@ -18,7 +20,7 @@ export default (req, res, next) => {
 
     fs.readFile(filePath, 'utf8', (err, htmlData) => {
         if (err) {
-            console.error('err', err);
+            logger.error('err', err);
             return res.status(404).end()
         }
 

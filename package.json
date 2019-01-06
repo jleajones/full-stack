@@ -4,9 +4,9 @@
   "description": "Fullstack Javascript app built with React and Express",
   "main": "index.js",
   "scripts": {
-    "serve:dev": "concurrently --kill-others-on-fail \"npm run start\" \"npm run client\"",
+    "serve:dev": "NODE_ENV=DEV concurrently --kill-others-on-fail \"npm run start\" \"npm run client:dev\"",
     "start": "nodemon --exec babel-node server.js",
-    "client": "cd client && npm run build && npm run start:dev",
+    "client:dev": "cd client && npm run build && npm run start:dev",
     "test": "test"
   },
   "keywords": [
@@ -19,6 +19,7 @@
   "author": "J. Lea-Jones",
   "license": "ISC",
   "dependencies": {
+    "convict": "^4.4.1",
     "express": "^4.16.4",
     "morgan": "^1.9.1",
     "winston": "^3.1.0"

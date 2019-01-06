@@ -24,7 +24,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start:dev": "NODE_ENV=dev nodemon --exec babel-node server/index.js"
+    "start:dev": "NODE_ENV=DEV nodemon --exec babel-node server/index.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,5 +34,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "proxy": "http://localhost:3001"
 }
