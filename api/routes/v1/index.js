@@ -8,11 +8,10 @@ router.use('/health-check', healthCheck);
 router.use('/load', load);
 
 router.get('/', (req, res) => {
-    res.json({
-        'health-check': 1,
-        'load': 1
-    })
+  res.json({
+    'health-check': 1,
+    load: 1
+  });
 });
-
 
 export default router;

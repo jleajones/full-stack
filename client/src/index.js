@@ -6,12 +6,9 @@ import App from './App';
 // import * as serviceWorker from './serviceWorker';
 
 window.onload = () => {
-    Loadable.preloadReady().then(() => {
-        ReactDOM.hydrate(
-            <App/>,
-            document.getElementById('root')
-        );
-    });
+  Loadable.preloadReady().then(() => {
+    ReactDOM.hydrate(<App />, document.getElementById('root'));
+  });
 };
 
 // If you want your app to work offline and load faster, you can change

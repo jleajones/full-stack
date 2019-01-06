@@ -1,18 +1,18 @@
 import convict from 'convict';
 
 const config = convict({
-    env: {
-        doc: 'The UI Application Environment',
-        format: ['PROD', 'DEV', 'TEST'],
-        default: 'dev',
-        env: 'NODE_ENV'
-    },
-    port: {
-        doc: 'The Application Port',
-        format: 'port',
-        default: 5000,
-        env: 'PORT'
-    }
+  env: {
+    doc: 'The UI Application Environment',
+    format: ['PROD', 'DEV', 'TEST'],
+    default: 'dev',
+    env: 'NODE_ENV'
+  },
+  port: {
+    doc: 'The Application Port',
+    format: 'port',
+    default: 5000,
+    env: 'PORT'
+  }
 });
 
 const env = config.get('env');

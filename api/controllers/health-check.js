@@ -1,5 +1,5 @@
 export default (req, res) => {
-    res.json({
-        'status': 'Everything is ok'
-    })
-}
+  res.json({
+    status: 'Everything is ok'
+  });
+};

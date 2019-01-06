@@ -6,9 +6,9 @@ const router = express.Router();
 router.use('/v1', v1);
 
 router.get('/', (req, res) => {
-    res.json({
-        'version': 1
-    })
+  res.json({
+    version: 1
+  });
 });
 
 export default router;
