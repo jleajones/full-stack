@@ -3,14 +3,16 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 
-import { errLog, outLog } from './middleware/logger';
-import logger from './utils/logger';
 import config from './config';
+import logger from './utils/logger';
+import { errLog, outLog } from './middleware/logger';
+
 import ApiService from './routes/api';
 import AuthService from './routes/auth';
 
 const ENV = config.get('env');
 const PORT = config.get('port');
+
 const app = express();
 
 app.use(errLog);
