@@ -6,7 +6,8 @@ import cors from 'cors';
 import { errLog, outLog } from './middleware/logger';
 import logger from './utils/logger';
 import config from './config';
-import apiRoutes from './api/routes';
+import ApiService from './routes/api';
+import AuthService from './routes/auth';
 
 const ENV = config.get('env');
 const PORT = config.get('port');
@@ -25,14 +26,15 @@ app.get('/', (req, res) =>
     api: 1
   })
 );
-app.use('/api', apiRoutes);
+app.use(AuthService);
+app.use(ApiService);
 app.use((req, res, next) => {
   const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
-if (ENV === 'DEV') {
+if (ENV === 'dev') {
   app.use((err, req, res) => {
     res.status(err.status || 500);
     res.render('error', {
@@ -52,10 +54,10 @@ app.use((err, req, res) => {
 
 app.listen(PORT, error => {
   if (error) {
-    return logger.error('something bad happened', error);
+    logger.error('something bad happened', error);
   }
 
-  return logger.info(
+  logger.info(
     `🌐 API Server Config: Running in ${ENV} mode; Listening on PORT ${PORT}`
   );
 });

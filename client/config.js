@@ -3,7 +3,7 @@ import convict from 'convict';
 const config = convict({
   env: {
     doc: 'The UI Application Environment',
-    format: ['PROD', 'DEV', 'TEST'],
+    format: ['prod', 'dev', 'test'],
     default: 'dev',
     env: 'NODE_ENV'
   },
@@ -16,7 +16,7 @@ const config = convict({
 });
 
 const env = config.get('env');
-config.loadFile(`./config/${env}.json`);
+config.loadFile(`./.config/${env}.json`);
 config.validate({ allowed: 'strict' });
 
 export default config;

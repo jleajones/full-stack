@@ -1,7 +1,7 @@
 import winston, { format } from 'winston';
 import config from '../config';
 
-const level = config.get('env') === 'DEV' ? 'debug' : 'error';
+const level = config.get('env') === 'dev' ? 'debug' : 'error';
 
 export default winston.createLogger({
   transports: [

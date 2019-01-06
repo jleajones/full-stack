@@ -11,7 +11,7 @@ class TestComponent extends React.Component {
   render() {
     return (
       <div>
-        <span>Test</span> I'm async, but i am ready
+        <span>Test, reload</span> I'm async, but i am ready
       </div>
     );
   }

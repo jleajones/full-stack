@@ -4,10 +4,17 @@
   "description": "Fullstack Javascript app built with React and Express",
   "main": "index.js",
   "scripts": {
-    "serve:dev": "NODE_ENV=DEV concurrently --kill-others-on-fail \"npm run start\" \"npm run client:dev\"",
+    "serve:dev": "NODE_ENV=dev concurrently --kill-others-on-fail \"npm run start\" \"npm run client:dev\"",
     "start": "nodemon --exec babel-node server.js",
     "client:dev": "cd client && npm run build:dev && npm run start:dev",
-    "test": "test"
+    "test": "jest"
+  },
+  "jest": {
+    "verbose": true,
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/client/"
+    ]
   },
   "keywords": [
     "javascript",
@@ -19,6 +26,7 @@
   "author": "J. Lea-Jones",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "convict": "^4.4.1",
     "cookie-parser": "^1.4.3",
@@ -39,7 +47,9 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.3",
+    "jest": "^23.6.0",
     "nodemon": "^1.18.9",
-    "prettier": "^1.15.3"
+    "prettier": "^1.15.3",
+    "supertest": "^3.3.0"
   }
 }
