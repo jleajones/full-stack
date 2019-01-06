@@ -1,11 +1,13 @@
 import 'ignore-styles';
 import express from 'express';
 import Loadable from 'react-loadable';
+import config from '../config';
 import logger from '../../utils/logger'
 import { errLog, outLog } from '../../middleware/logger';
 import serverRenderer from './middleware/serverRenderer';
 
-const PORT = 3000;
+const ENV = config.get('env');
+const PORT = config.get('port');
 const path = require('path');
 
 // initialize the application and create the routes
@@ -34,6 +36,6 @@ Loadable.preloadAll().then(() => {
             return logger.error('something bad happened', error);
         }
 
-        logger.info(`UI Server: LISTENING ON PORT ${PORT}`);
+        logger.info(`🌐 UI Server: Running in ${ENV} mode; Listening on PORT ${PORT}`);
     });
 });
