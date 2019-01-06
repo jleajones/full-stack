@@ -1,17 +1,19 @@
 import React from 'react';
-import axios from 'axios';
+import API from '../../api';
 
 class TestComponent extends React.Component {
   componentDidMount() {
-    axios
-      .get(`${process.env.REACT_APP_API_BASEURL}api/v1/health-check`)
-      .then(resp => {
-        console.log(resp);
-      });
+    API.get(`api/v1/health-check`).then(resp => {
+      console.log(resp);
+    });
   }
 
   render() {
-    return <div>I'm async, but i am ready</div>;
+    return (
+      <div>
+        <span>Test</span> I'm async, but i am ready
+      </div>
+    );
   }
 }
 
