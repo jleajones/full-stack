@@ -8,7 +8,7 @@ const config = convict({
     env: 'NODE_ENV'
   },
   port: {
-    doc: 'The Application Port',
+    doc: 'The UI Application Port',
     format: 'port',
     default: 5000,
     env: 'PORT'
