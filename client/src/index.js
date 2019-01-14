@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Loadable from 'react-loadable';
+import { BrowserRouter} from 'react-router-dom';
+import { Frontload } from 'react-frontload';
 
 import App from './App';
 // import * as serviceWorker from './serviceWorker';
+const Application = (
+  <BrowserRouter>
+    <Frontload noServerRender={true}>
+      <App />
+    </Frontload>
+  </BrowserRouter>
+);
 
 window.onload = () => {
   Loadable.preloadReady().then(() => {
-    ReactDOM.hydrate(<App />, document.getElementById('root'));
+    ReactDOM.hydrate(Application, document.getElementById('root'));
   });
 };
 

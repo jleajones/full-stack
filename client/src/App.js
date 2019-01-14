@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { StripeProvider } from 'react-stripe-elements';
 
 import './App.css';
-import TestComponent from './asyncComponents/TestComponent';
+import Routes from './routes';
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { stripe: null };
   }
   componentDidMount() {
@@ -22,7 +22,7 @@ class App extends Component {
 
     return (
       <StripeProvider stripe={stripe}>
-        <TestComponent />
+        <Routes />
       </StripeProvider>
     );
   }
