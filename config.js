@@ -12,6 +12,19 @@ const config = convict({
     format: 'port',
     default: 3001,
     env: 'PORT'
+  },
+  stripe: {
+    secret_key: {
+      doc: 'The Stripe Secret Port',
+      format: String,
+      default: '',
+      sensitive: true
+    },
+    public_key: {
+      doc: 'The Stripe public Port',
+      format: String,
+      default: ''
+    }
   }
 });
 
