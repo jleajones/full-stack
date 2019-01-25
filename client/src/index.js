@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Loadable from 'react-loadable';
-import { BrowserRouter} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Frontload } from 'react-frontload';
 
 import App from './App';
 // import * as serviceWorker from './serviceWorker';
 const Application = (
   <BrowserRouter>
-    <Frontload noServerRender={true}>
+    <Frontload noServerRender>
       <App />
     </Frontload>
   </BrowserRouter>

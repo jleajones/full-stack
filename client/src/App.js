@@ -1,31 +1,35 @@
-import React, { Component } from 'react';
-import { StripeProvider } from 'react-stripe-elements';
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-import './App.css';
+import './App.scss';
+
 import Routes from './routes';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { stripe: null };
-  }
-  componentDidMount() {
-    // Create Stripe instance in componentDidMount
-    // (componentDidMount only fires in browser/DOM environment)
-    this.setState({
-      stripe: window.Stripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
-    });
-  }
+import Header from './components/header';
+import Footer from './components/footer';
+import Sidebar from './components/sidebar';
 
-  render() {
-    const { stripe } = this.state;
-
-    return (
-      <StripeProvider stripe={stripe}>
+const App = ({ location }) => {
+  const hasSidebar =
+    location.pathname !== '/' && location.pathname !== '/about';
+  const hasHeader = location.pathname === '/' || location.pathname === '/about';
+  return (
+    <div className="app">
+      {hasHeader && <Header />}
+      <section>
+        {hasSidebar && <Sidebar />}
         <Routes />
-      </StripeProvider>
-    );
-  }
-}
+      </section>
+      <Footer />
+    </div>
+  );
+};
 
-export default App;
+App.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  }).isRequired
+};
+
+export default withRouter(App);

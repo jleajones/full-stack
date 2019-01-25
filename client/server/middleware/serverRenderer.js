@@ -19,15 +19,15 @@ const extractAssets = (assets, chunks) =>
     .map(k => assets[k]);
 
 const injectHTML = (data, { html, title, meta, body, scripts, state }) => {
-  data = data.replace('<html>', `<html ${html}>`);
-  data = data.replace(/<title>.*?<\/title>/g, title);
-  data = data.replace('</head>', `${meta}</head>`);
-  data = data.replace(
+  let finalHtml = data.replace('<html>', `<html ${html}>`);
+  finalHtml = finalHtml.replace(/<title>.*?<\/title>/g, title);
+  finalHtml = finalHtml.replace('</head>', `${meta}</head>`);
+  finalHtml = finalHtml.replace(
     '<div id="root"></div>',
     `<div id="root">${body}</div><script>window.__PRELOADED_STATE__ = ${state}</script>`
   );
-  data = data.replace('</body>', scripts.join('') + '</body>');
-  return data;
+  finalHtml = finalHtml.replace('</body>', scripts.join('') + '</body>');
+  return finalHtml;
 };
 
 export default (req, res) => {
@@ -46,7 +46,7 @@ export default (req, res) => {
       ReactDOMServer.renderToString(
         <Loadable.Capture report={m => modules.push(m)}>
           <StaticRouter location={req.url} context={context}>
-            <Frontload isServer={true}>
+            <Frontload isServer>
               <App />
             </Frontload>
           </StaticRouter>
@@ -66,10 +66,10 @@ export default (req, res) => {
         title: helmet.title.toString(),
         meta: helmet.meta.toString(),
         body: routeMarkup,
-        scripts: extraChunks,
+        scripts: extraChunks
       });
 
       return res.send(html);
-    })
+    });
   });
 };

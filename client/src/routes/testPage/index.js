@@ -1,7 +1,7 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 import { StripeProvider } from 'react-stripe-elements';
 
+import Page from '../../components/page';
 import TestComponent from '../../asyncComponents/TestComponent';
 
 class TestPage extends React.Component {
@@ -20,12 +20,13 @@ class TestPage extends React.Component {
     const { stripe } = this.state;
 
     return (
-      <div>
-        <Helmet title="Test Page Title" />
-        <StripeProvider stripe={stripe}>
-          <TestComponent />
-        </StripeProvider>
-      </div>
+      <Page pageTitle="Test Page Title">
+        <div className="gr-12">
+          <StripeProvider stripe={stripe}>
+            <TestComponent />
+          </StripeProvider>
+        </div>
+      </Page>
     );
   }
 }

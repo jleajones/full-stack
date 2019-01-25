@@ -1,0 +1,37 @@
+// import gridle
+@import "~coffeekraken-gridle/flex";
+
+// setting up the grid
+@include g-setup( (
+        context : 12,
+        gutter-width : 20px,
+        direction : rtl,
+  // etc...
+));
+
+// make the use of media queries really easy
+@include g-register-state ( small , (
+        context : 4,
+        max-width : 767px
+));
+
+@include g-register-state ( med , (
+        min-width : 768px,
+        max-width : 1023px
+));
+
+@include g-register-state ( large , (
+        min-width : 1024px,
+        max-width : 1280px
+));
+
+//@include g-register-state ( x-large , (
+//        min-width : 1280px,
+//        max-width : 1920px
+//));
+
+// even with full custom queries :
+//@include g-register-state ( landscape, (
+//        query : "(orientation : landscape)"
+//));
+// generate classes :

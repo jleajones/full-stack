@@ -2,9 +2,9 @@ import React from 'react';
 import Page from '../../components/page';
 
 export default () => (
-  <Page pageTitle="About Page">
+  <Page pageTitle="Full-Stack Dashboard">
     <div className="gr-12">
-      <h1>About Page</h1>
+      <h1>Dashboard...</h1>
     </div>
   </Page>
 );

@@ -1,5 +1,10 @@
 import React from 'react';
-import { CardElement, Elements, injectStripe } from 'react-stripe-elements';
+import {
+  StripeProvider,
+  CardElement,
+  Elements,
+  injectStripe
+} from 'react-stripe-elements';
 
 import API from '../../api';
 
@@ -66,19 +71,30 @@ const Checkout = () => {
 };
 
 class TestComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { stripe: null };
+  }
+
   componentDidMount() {
     API.get(`api/health-check`).then(resp => {
       console.log(resp);
+    });
+
+    this.setState({
+      stripe: window.Stripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
     });
   }
 
   onClick = e => console.log(e);
 
   render() {
+    const { stripe } = this.state;
+
     return (
-      <div>
+      <StripeProvider stripe={stripe}>
         <Checkout />
-      </div>
+      </StripeProvider>
     );
   }
 }
