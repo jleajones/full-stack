@@ -7,6 +7,6 @@ import './styles.scss';
 export default () => (
   <header>
     <MainNav />
-    <span>I am a header</span>
+    <span>I am a header, edited</span>
   </header>
 );
